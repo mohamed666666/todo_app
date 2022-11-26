@@ -26,7 +26,7 @@
 					
 						<div class="form-group">
 							<div class="input-group">
-							  <input type="text" class="form-control" placeholder="Enter todo e.g. Wash my car" aria-label="Todo" aria-describedby="add-btn">
+							  <input  type="text" class="form-control" placeholder="Enter todo e.g. Wash my car" aria-label="Todo" aria-describedby="add-btn">
 							  <span class="input-group-btn">
 								  <button type="submit" class="btn btn-default" id="add-btn">ADD</button>
 							  </span>
@@ -52,9 +52,18 @@
 					</div>
 
 					<ul class="list-group t20">
-						<li class="list-group-item">Learn something new.</li>
-						<li class="list-group-item todo-completed">Buy a new journal</li>
-						<li class="list-group-item">Book a dentist appointment.</li>
+						{% for task in tasks%}
+						{%if task.done %}
+						<li class="list-group-item todo-completed">{{task.describtion}}</li>
+
+
+						{%else%}
+
+						<a href="#"><li class="list-group-item">{{task.describtion}}</li></a>
+						{%endif %}
+
+
+						{%endfor%}
 					</ul>
 				</div>
 			</div>
